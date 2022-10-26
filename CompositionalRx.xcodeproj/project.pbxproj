@@ -15,6 +15,7 @@
 		CF00445E29059DDB00BAD156 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00445D29059DDB00BAD156 /* APIService.swift */; };
 		CF0044652905AF0A00BAD156 /* SearchPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0044642905AF0A00BAD156 /* SearchPhoto.swift */; };
 		CF00446C2905C16B00BAD156 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF00446B2905C16B00BAD156 /* ImageCache.swift */; };
+		CF49BE8429091D2600FFF322 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF49BE8329091D2600FFF322 /* NetworkError.swift */; };
 		CF59C015290584B100A9D559 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59C014290584B100A9D559 /* AppDelegate.swift */; };
 		CF59C017290584B100A9D559 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59C016290584B100A9D559 /* SceneDelegate.swift */; };
 		CF59C01E290584B200A9D559 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF59C01D290584B200A9D559 /* Assets.xcassets */; };
@@ -27,6 +28,8 @@
 		CF59C03929058FD000A9D559 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF59C03829058FD000A9D559 /* SnapKit */; };
 		CF59C03D290591DF00A9D559 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59C03C290591DF00A9D559 /* MainViewController.swift */; };
 		CF59C0402905921900A9D559 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59C03F2905921900A9D559 /* BaseViewController.swift */; };
+		CF806EF629080F97009D93D0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CF806EF529080F97009D93D0 /* RxCocoa */; };
+		CF806EF829080F97009D93D0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF806EF729080F97009D93D0 /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,7 @@
 		CF00445D29059DDB00BAD156 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CF0044642905AF0A00BAD156 /* SearchPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhoto.swift; sourceTree = "<group>"; };
 		CF00446B2905C16B00BAD156 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		CF49BE8329091D2600FFF322 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CF59C011290584B100A9D559 /* CompositionalRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompositionalRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59C014290584B100A9D559 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF59C016290584B100A9D559 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 			files = (
 				CF59C03929058FD000A9D559 /* SnapKit in Frameworks */,
 				CF59C03629058FB700A9D559 /* Kingfisher in Frameworks */,
+				CF806EF829080F97009D93D0 /* RxSwift in Frameworks */,
+				CF806EF629080F97009D93D0 /* RxCocoa in Frameworks */,
 				CF59C03329058FA400A9D559 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,12 +102,13 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		CF00446029059DF100BAD156 /* Entitiy */ = {
+		CF00446029059DF100BAD156 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				CF00446229059F0200BAD156 /* New Group */,
+				CF49BE80290914AE00FFF322 /* Repository */,
+				CF00446229059F0200BAD156 /* Entitiy */,
 			);
-			path = Entitiy;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		CF00446129059EDD00BAD156 /* Main */ = {
@@ -112,18 +119,21 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		CF00446229059F0200BAD156 /* New Group */ = {
+		CF00446229059F0200BAD156 /* Entitiy */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "New Group";
+			path = Entitiy;
 			sourceTree = "<group>";
 		};
-		CF0044632905A95000BAD156 /* UseCase */ = {
+		CF0044632905A95000BAD156 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CF49BE822909163600FFF322 /* Model */,
+				CF49BE81290914C900FFF322 /* UseCase */,
+				CF59C03029058F7D00A9D559 /* NetWork */,
 			);
-			path = UseCase;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		CF00446A2905C13E00BAD156 /* Protocols */ = {
@@ -132,6 +142,28 @@
 				CF00446B2905C16B00BAD156 /* ImageCache.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CF49BE80290914AE00FFF322 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		CF49BE81290914C900FFF322 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		CF49BE822909163600FFF322 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF0044642905AF0A00BAD156 /* SearchPhoto.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CF59C008290584B100A9D559 = {
@@ -154,8 +186,8 @@
 		CF59C013290584B100A9D559 /* CompositionalRx */ = {
 			isa = PBXGroup;
 			children = (
-				CF00446029059DF100BAD156 /* Entitiy */,
-				CF0044632905A95000BAD156 /* UseCase */,
+				CF00446029059DF100BAD156 /* Data */,
+				CF0044632905A95000BAD156 /* Domain */,
 				CF00445F29059DE200BAD156 /* Presenter */,
 				CF59C03A290591B400A9D559 /* Scene */,
 				CF59C028290585A100A9D559 /* APIKeys */,
@@ -185,7 +217,6 @@
 				CF0044542905966400BAD156 /* SubView */,
 				CF0044512905952600BAD156 /* Reactive */,
 				CF59C03E2905920500A9D559 /* BaseView */,
-				CF59C03029058F7D00A9D559 /* NetWork */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -195,7 +226,7 @@
 			children = (
 				CF59C02E290589FD00A9D559 /* EndPoint.swift */,
 				CF00445D29059DDB00BAD156 /* APIService.swift */,
-				CF0044642905AF0A00BAD156 /* SearchPhoto.swift */,
+				CF49BE8329091D2600FFF322 /* NetworkError.swift */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -246,6 +277,8 @@
 				CF59C03229058FA400A9D559 /* Alamofire */,
 				CF59C03529058FB700A9D559 /* Kingfisher */,
 				CF59C03829058FD000A9D559 /* SnapKit */,
+				CF806EF529080F97009D93D0 /* RxCocoa */,
+				CF806EF729080F97009D93D0 /* RxSwift */,
 			);
 			productName = CompositionalRx;
 			productReference = CF59C011290584B100A9D559 /* CompositionalRx.app */;
@@ -279,6 +312,7 @@
 				CF59C03129058FA400A9D559 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CF59C03429058FB700A9D559 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CF59C03729058FD000A9D559 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				CF806EF429080F97009D93D0 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = CF59C012290584B100A9D559 /* Products */;
 			projectDirPath = "";
@@ -316,6 +350,7 @@
 				CF0044532905955500BAD156 /* CObservable.swift in Sources */,
 				CF59C017290584B100A9D559 /* SceneDelegate.swift in Sources */,
 				CF59C03D290591DF00A9D559 /* MainViewController.swift in Sources */,
+				CF49BE8429091D2600FFF322 /* NetworkError.swift in Sources */,
 				CF0044652905AF0A00BAD156 /* SearchPhoto.swift in Sources */,
 				CF59C0402905921900A9D559 /* BaseViewController.swift in Sources */,
 				CF00445C2905980A00BAD156 /* BaseView.swift in Sources */,
@@ -464,7 +499,6 @@
 				INFOPLIST_FILE = CompositionalRx/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -496,7 +530,6 @@
 				INFOPLIST_FILE = CompositionalRx/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -564,6 +597,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		CF806EF429080F97009D93D0 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -581,6 +622,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF59C03729058FD000A9D559 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		CF806EF529080F97009D93D0 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF806EF429080F97009D93D0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		CF806EF729080F97009D93D0 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF806EF429080F97009D93D0 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

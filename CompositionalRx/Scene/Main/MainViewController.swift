@@ -7,13 +7,16 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class MainViewController: BaseViewController, ImageCache {
     
     // MARK: - Properties
     let mainView = MainView()
-    
-    var input = InputMainViewData()
-    var output = OutputMainViewData()
+
+    let viewModel = MainViewModelImpl()
+    let disposeBag = DisposeBag()
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, SearchResult>!
     
@@ -26,21 +29,42 @@ final class MainViewController: BaseViewController, ImageCache {
         super.viewDidLoad()
         
     }
-
     
     override func configure() {
-        
         mainView.collectionView.delegate = self
         mainView.collectionView.collectionViewLayout = createLayout()
-        mainView.searchBar.delegate = self
+        configureDataSource()
+//        mainView.searchBar.delegate = self
     }
     
     // MARK: - Binding
     override func setBinding() {
         
+        viewModel.photoList
+            .withUnretained(self)
+            .subscribe { vc, photoList in
+                var snapShot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+                snapShot.appendSections([0])
+                snapShot.appendItems(photoList.results)
+                vc.dataSource.apply(snapShot)
+            } onError: { error in
+                print("==== error: \(error)")
+            } onCompleted: {
+                print("==== completed")
+            } onDisposed: {
+                print("onDispose")
+            }
+            .disposed(by: disposeBag)
+        
+        mainView.searchBar.rx.text.orEmpty
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .bind { $0.viewModel.requestSearchPhoto(query: $1) }
+            .disposed(by: disposeBag)
+        
     }
     
-
 }
 
 // MARK: - Diffable Setting
@@ -77,11 +101,17 @@ extension MainViewController {
             background.strokeWidth = 2
             background.strokeColor = .blue
             cell.backgroundConfiguration = background
-            
         }
         
+        // cellForItemAt && numberOfItemsInSection
+        dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegisteration, for: indexPath, item: itemIdentifier)
+            
+            return cell
+        })
+        
     }
-    
 }
 
 extension MainViewController: UICollectionViewDelegate {
@@ -92,10 +122,10 @@ extension MainViewController: UICollectionViewDelegate {
     
 }
 
-extension MainViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-    
-}
+//extension MainViewController: UISearchBarDelegate {
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//
+//    }
+//
+//}

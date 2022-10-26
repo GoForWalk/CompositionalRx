@@ -20,7 +20,6 @@ class MainView: BaseView {
     let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout.init())
         
-        
         return collectionView
     }()
     

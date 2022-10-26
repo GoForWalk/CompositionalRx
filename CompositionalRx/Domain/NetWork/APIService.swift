@@ -12,12 +12,14 @@ import Alamofire
 protocol APIService {
     
     func fetchSearchPhoto(query: String, completionHandler: @escaping (SearchPhoto?, Int?, Error?) -> Void)
+//    func fetchSearchPhoto(query: String, completionHandler: @escaping (Result<SearchPhoto, NetworkError>) -> Void)
     
 }
 
 class APIServiceImpl: APIService {
     
     func fetchSearchPhoto(query: String, completionHandler: @escaping (SearchPhoto?, Int?, Error?) -> Void) {
+//    func fetchSearchPhoto(query: String, completionHandler: @escaping (Result<SearchPhoto, NetworkError>) -> Void) {
         
         guard let url = URL(string: EndPoint.searchPhoto(query: query).url) else { return }
         

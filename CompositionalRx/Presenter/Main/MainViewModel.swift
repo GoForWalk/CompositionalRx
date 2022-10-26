@@ -7,29 +7,21 @@
 
 import Foundation
 
-final class MainViewModel {
+import RxSwift
+import RxRelay
+
+final class MainViewModelImpl {
     
     private let apiService: APIService = APIServiceImpl()
 
-//    init
-    
-    struct Input {
-        var query: String
-    }
-    
-    struct Output {
-        var photoList: CObservable<SearchPhoto?> = CObservable(nil)
-    }
-    
-    
-    func requestSearchPhoto(input: Input) {
+    let photoList = PublishSubject<SearchPhoto>()
         
-        apiService.fetchSearchPhoto(query: input.query) { photoList, statusCode, error in
-            
-            let output = Output()
+    func requestSearchPhoto(query: String) {
+        
+        apiService.fetchSearchPhoto(query: query) { [weak self] photoList, statusCode, error in
             
             guard let photoList else { return }
-            output.photoList.value = photoList
+            self?.photoList.onNext(photoList)
             
         }
     }
