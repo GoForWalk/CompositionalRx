@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class MainViewController: BaseViewController, ImageCache {
+final class MainViewController: BaseViewController {
     
     // MARK: - Properties
     let mainView = MainView()
@@ -88,6 +88,7 @@ extension MainViewController {
             // TODO: imageCache
             DispatchQueue.global(qos: .default).async {
                 guard let url = URL(string: itemIdentifier.urls.thumb) else { return }
+                
                 let data = try? Data(contentsOf: url)
                 
                 DispatchQueue.main.async {

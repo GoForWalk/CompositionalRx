@@ -30,6 +30,10 @@
 		CF59C0402905921900A9D559 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF59C03F2905921900A9D559 /* BaseViewController.swift */; };
 		CF806EF629080F97009D93D0 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CF806EF529080F97009D93D0 /* RxCocoa */; };
 		CF806EF829080F97009D93D0 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF806EF729080F97009D93D0 /* RxSwift */; };
+		CFD2AE0C290C2EA7005B4F59 /* URLSessionEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2AE0B290C2EA7005B4F59 /* URLSessionEx.swift */; };
+		CFD2AE0F290D0D21005B4F59 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2AE0E290D0D21005B4F59 /* ImageView.swift */; };
+		CFD2AE12290D1007005B4F59 /* NasaImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2AE11290D1007005B4F59 /* NasaImageViewController.swift */; };
+		CFD2AE15290D11B9005B4F59 /* NasaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD2AE14290D11B9005B4F59 /* NasaViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,10 @@
 		CF59C02E290589FD00A9D559 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		CF59C03C290591DF00A9D559 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CF59C03F2905921900A9D559 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CFD2AE0B290C2EA7005B4F59 /* URLSessionEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionEx.swift; sourceTree = "<group>"; };
+		CFD2AE0E290D0D21005B4F59 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		CFD2AE11290D1007005B4F59 /* NasaImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageViewController.swift; sourceTree = "<group>"; };
+		CFD2AE14290D11B9005B4F59 /* NasaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 		CF00445F29059DE200BAD156 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CFD2AE13290D119E005B4F59 /* ViewModel */,
 				CF00446129059EDD00BAD156 /* Main */,
 			);
 			path = Presenter;
@@ -224,6 +233,7 @@
 		CF59C03029058F7D00A9D559 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
+				CFD2AE0A290C2E55005B4F59 /* URLSession */,
 				CF59C02E290589FD00A9D559 /* EndPoint.swift */,
 				CF00445D29059DDB00BAD156 /* APIService.swift */,
 				CF49BE8329091D2600FFF322 /* NetworkError.swift */,
@@ -234,6 +244,7 @@
 		CF59C03A290591B400A9D559 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CFD2AE0D290D0D02005B4F59 /* NasaImage */,
 				CF59C03B290591C500A9D559 /* Main */,
 			);
 			path = Scene;
@@ -255,6 +266,31 @@
 				CF00445B2905980A00BAD156 /* BaseView.swift */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		CFD2AE0A290C2E55005B4F59 /* URLSession */ = {
+			isa = PBXGroup;
+			children = (
+				CFD2AE0B290C2EA7005B4F59 /* URLSessionEx.swift */,
+			);
+			path = URLSession;
+			sourceTree = "<group>";
+		};
+		CFD2AE0D290D0D02005B4F59 /* NasaImage */ = {
+			isa = PBXGroup;
+			children = (
+				CFD2AE0E290D0D21005B4F59 /* ImageView.swift */,
+				CFD2AE11290D1007005B4F59 /* NasaImageViewController.swift */,
+			);
+			path = NasaImage;
+			sourceTree = "<group>";
+		};
+		CFD2AE13290D119E005B4F59 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CFD2AE14290D11B9005B4F59 /* NasaViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,10 +378,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF0044502905951A00BAD156 /* MainViewModel.swift in Sources */,
+				CFD2AE0C290C2EA7005B4F59 /* URLSessionEx.swift in Sources */,
 				CF0044572905968000BAD156 /* MainView.swift in Sources */,
+				CFD2AE15290D11B9005B4F59 /* NasaViewModel.swift in Sources */,
+				CFD2AE0F290D0D21005B4F59 /* ImageView.swift in Sources */,
 				CF00446C2905C16B00BAD156 /* ImageCache.swift in Sources */,
 				CF59C015290584B100A9D559 /* AppDelegate.swift in Sources */,
 				CF59C02F290589FD00A9D559 /* EndPoint.swift in Sources */,
+				CFD2AE12290D1007005B4F59 /* NasaImageViewController.swift in Sources */,
 				CF59C02A290585B000A9D559 /* APIKeys.swift in Sources */,
 				CF0044532905955500BAD156 /* CObservable.swift in Sources */,
 				CF59C017290584B100A9D559 /* SceneDelegate.swift in Sources */,

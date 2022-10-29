@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 //        let rootViewController = TabbarController()
         
-        self.window?.rootViewController = MainViewController()
+        self.window?.rootViewController = NasaImageViewController()
         self.window?.makeKeyAndVisible()
 
     }

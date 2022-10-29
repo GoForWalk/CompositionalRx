@@ -11,5 +11,6 @@ enum NetworkError: Error {
     
     case serverError
     case nonePhoto
+    case urlError
     
 }
